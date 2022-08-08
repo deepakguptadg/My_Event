@@ -1,7 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from '../../firebase';
 const AddEvent = () => {
+    const [image, setImage] = useState()
+    console.log('image', image)
+    const [percent, setPercent] = useState(0);
+
+    useEffect(() =>{
+        if(image){
+            submit()
+        }
+    }, [image])
+
+
+    const submit = () => {
+        alert('call')
+        const storageRef = ref(storage, `/files/${image.name}`)
+        const uploadTask = uploadBytesResumable(storageRef, image);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const percent = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+
+                setPercent(percent);
+            },
+            (err) => console.log(err),
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                    console.log(url);
+                });
+            }
+        );
+    }
     return (
         <>
             <div className="content-wrapper">
@@ -35,13 +69,17 @@ const AddEvent = () => {
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Event Name</label>
+                                                <input type="file" onChange={(e) => setImage(e.target.files[0])} name="file" class="form-control" id="exampleInputEmail1" />
+                                            </div>
+                                            <p>{percent}</p>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Event Name</label>
                                                 <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Event Name . . ." />
                                             </div>
                                             <div class="form-group">
                                                 <label>Event Date and time:</label>
                                                 <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
                                                     <input type="datetime-local" class="form-control datetimepicker-input" data-target="#reservationdatetime" />
-                                                   
                                                 </div>
                                             </div>
                                             <div class="form-group">
