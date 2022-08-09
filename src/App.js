@@ -14,6 +14,7 @@ import Login from './Components/Auth/Login';
 import Auth from './Auth';
 import UserData from './Components/Context/UserData';
 import ViewNotes from './Components/Pages/ViewNotes';
+import Gallery from './Components/Pages/Gallery';
 function App() {
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
               <Route exact path="/my-notes" element={<Auth Com={MyNotes} />} />
               <Route exact path="/my-events" element={<Auth Com={MyEvents} />} />
               <Route exact path="/view-notes/:id" element={<Auth Com={ViewNotes} />} />
+              <Route exact path="/gallery" element={<Auth Com={Gallery} />} />
               <Route path='*' element={<PageNotFound />} />
             </Routes>
             <Footer />

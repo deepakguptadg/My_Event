@@ -107,13 +107,13 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div class="col-4">
-                                        <button type="button" class="btn btn-primary btn-block">Sign In</button>
+                                        <button type="button" class="btn btn-primary btn-block" disabled>Sign In</button>
                                     </div>
                                 </div>
                             </form>
 
                             <div class="social-auth-links text-center mt-2 mb-3">
-                                <button type='button' class="btn btn-block btn-primary">
+                                <button type='button' disabled class="btn btn-block btn-primary">
                                     <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
                                 </button>
                                 <button type='button' onClick={(e) => LoginSubmit(e)} class="btn btn-block btn-danger">

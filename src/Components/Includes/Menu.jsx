@@ -67,7 +67,7 @@ const Menu = () => {
 
                             <li className="nav-item">
                                 <Link to="/add-event" className="nav-link">
-                                    <i className="nav-icon fas fa-th" />
+                                    <i className="nav-icon far fa-calendar-alt" />
                                     <p>
                                         Add Events
                                     </p>
@@ -76,9 +76,17 @@ const Menu = () => {
 
                             <li className="nav-item">
                                 <Link to="add-notes" className="nav-link">
-                                    <i className="nav-icon far fa-image" />
+                                    <i className="nav-icon fas fa-book" />
                                     <p>
                                         Add Notes
+                                    </p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="gallery" className="nav-link">
+                                    <i className="nav-icon far fa-image" />
+                                    <p>
+                                        Gallery
                                     </p>
                                 </Link>
                             </li>

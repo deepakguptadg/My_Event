@@ -50,8 +50,8 @@ const MyNotes = () => {
                             </div>{/* /.col */}
                             <div className="col-sm-6">
                                 <ol className="breadcrumb float-sm-right">
-                                    <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
-                                    <li className="breadcrumb-item active">My Notes</li>
+                                    <li className="breadcrumb-item"><Link to="/" className='text-dark'>Dashboard</Link></li>
+                                    <li className="breadcrumb-item active"><Link to="/add-notes" className='text-dark'>My Notes</Link></li>
                                 </ol>
                             </div>{/* /.col */}
                         </div>{/* /.row */}
